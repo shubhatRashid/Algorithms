@@ -26,6 +26,9 @@ A Good Algorithm is :
               with a result.This can depend on hardware but a good algorithm
               must perform under all circumstances and hence a good algorithm
               takes as less space as possible.
-        - Time :
+
 
 '''
+
+
+
