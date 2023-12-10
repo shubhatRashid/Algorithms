@@ -33,6 +33,12 @@ b.right = e
 
 c.left = f
 
+# prints   a
+#         /  \
+#        b     c
+#       / \     \
+#      d   e     f
+
 """
 Depth First Traversal :
     Traversing the tree by going in depth first and then laterally.
@@ -52,7 +58,7 @@ def dft(root):
             stack.append(temp.right)
         temp = stack.pop(0)
     return result
-
+# dft(a) prints [a,b,c,d,e,f]
 
 
 
