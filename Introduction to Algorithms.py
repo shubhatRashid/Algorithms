@@ -26,6 +26,17 @@ A Good Algorithm is :
               with a result.This can depend on hardware but a good algorithm
               must perform under all circumstances and hence a good algorithm
               takes as less space as possible.
+        - Time :
+            - How much time does the algorithm take to come up with a result.
+              A good algorithm takes relatively lesser time to come up with
+              expected result
+        - Measuring Efficiency :
+            - Big O notation :
+                Big O notation specifies the time taken by the algorithm in worst
+                case scenario that is if the algorithm faces the worst set of inputs.
+                e.g in a linear search algorithm if the element is located at the
+                end of an array , such a situation would be represented by O(n) as its
+                time complexity where n denotes the length of the array.
 
 
 '''
