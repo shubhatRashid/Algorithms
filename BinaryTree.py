@@ -64,6 +64,14 @@ def dft(root):
 def dftr(root):
     if not root:
         return []
+    res = []
+    res.append(root.val)
+    left = dftr(root.left)
+    right = dftr(root.right)
+    res += left
+    res += right
+    return res
+
 
 
 
