@@ -47,18 +47,24 @@ Depth First Traversal :
 
 # DFT using iteration
 def dft(root):
+    if not root:
+        return []
     stack = [root]
     result = []
     while stack:
-        temp = stack[0]
+        temp = stack.pop()
         result.append(temp.val)
-        if temp.left:
-            stack.append(temp.left)
         if temp.right:
             stack.append(temp.right)
-        temp = stack.pop(0)
+        if temp.left:
+            stack.append(temp.left)
     return result
-# dft(a) prints [a,b,c,d,e,f]
+
+# DFT using recursion
+def dftr(root):
+    if not root:
+        return []
+
 
 
 
