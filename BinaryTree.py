@@ -49,7 +49,7 @@ Depth First Traversal :
 def dft(root):
     if not root:
         return []
-    stack = [root]
+    stack = [root] #stack
     result = []
     while stack:
         temp = stack.pop()
@@ -72,7 +72,27 @@ def dftr(root):
     res += right
     return res
 
+"""
+Breadth First Traversal :
+    Traversing the tree by going in breadth first and then vertically.
+    Can be done either using iteration of recursion
+"""
+# BFT using iteration
+def bft(root):
+    if not root:
+        return []
+    queue = [root]
+    result = []
+    while queue:
+        temp = queue.pop(0)
+        result.append (temp.val)
 
+        if temp.left:
+            queue.append(temp.left)
 
+        if temp.right:
+            queue.append(temp.right)
+
+    return result
 
 
