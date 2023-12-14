@@ -95,4 +95,9 @@ def bft(root):
 
     return result
 
-
+'''
+Important Note :
+    - recursion uses stack under the hood and hence bfs 
+        cannot be implemented using recursion as it uses 
+        queue
+'''
