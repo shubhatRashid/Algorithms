@@ -1,6 +1,6 @@
 """
 Binary Tree :
-    A data struction consisting of nodes where each node has atmost
+    A data struction consisting of nodes where each node has at most
     two children generally represented as left and right.Node with
     no parent is called Root and node with no children is called leaf.
     A binary tree has :
@@ -101,3 +101,56 @@ Important Note :
         cannot be implemented using recursion as it uses 
         queue
 '''
+
+
+"""
+List Representation of Binary Tree:
+    - Binary Trees can also be represented using lists by 
+      following these formulas :
+      
+      index starts from 1 i.e root is stores at index 1,
+      left child is stored at : (2 * i) index
+      right child is stored at :( 2 * i) + 1 index
+      parent is stored at : i//2 index,
+      
+      example:
+           a
+          /  \
+         b     c
+        / \     \
+       d   e     f
+         
+      would be represented as : [a,b,c,d,e,_,f]
+      Note : if a child is not present ,leave its position as blank.
+"""
+
+"""
+Complete Binary Tree:
+    - Binary Tree which if represented by a list doesnot have any blank
+    entries or missing children in between is a complete binary tree.
+    
+    - In a complete binary tree, all possible nodes are filled upto 
+      a height of h-1 if h is the height of binary tree.
+      
+    - example:
+           a
+          /  \
+         b     c
+        / \   /
+       d   e f
+      
+Full Binary Tree :
+    - A Binary tree where all possible nodes are filled on all levels
+      is a Full binary tree.
+    - A complete binary tree is a full binary tree upto a height of 
+      h-1
+    - A Full binary tree is always a complete binary tree
+    
+    - example:
+           a
+          /  \
+         b     c
+        / \   / \
+       d   e f   g
+    
+"""
