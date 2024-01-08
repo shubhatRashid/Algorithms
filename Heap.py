@@ -8,4 +8,16 @@ Heap:
     - A pop operation on heap gives max element (max-heap) or min element (min-heap) from
         the heap.The operation takes olog(n) time complexity (for heapifying)
     - Similarly inserting an element also takes olog(n) time complexity.
+    - Use heapq library in python for list heaps implementation
 """
+import heapq
+
+minHeap = [5,2,6,4,5,7,9] # initialising a list as our min heap
+heapq.heapify(minHeap)  # heapifying
+print(minHeap)  # returns [2, 4, 6, 5, 5, 7, 9]
+heapq.heappush(minHeap,10)
+print(minHeap) # returns [2, 4, 6, 5, 5, 7, 9, 10]
+heapq.heappop(minHeap)
+print(minHeap) # returns [4, 5, 6, 5, 10, 7, 9]
+
+
