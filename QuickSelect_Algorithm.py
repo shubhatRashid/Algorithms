@@ -11,7 +11,7 @@ pivot untill we get a list where each element on the left of pivot is less than 
 and on the right greater than pivot then we check if index of pivot is greater ,less
 or equal to k and continue accordingly untill p == k
 """
-def findKthLargest(nums, k):
+def findKthLargest1(nums, k):
     k = len (nums) - k # retrieve k from last
 
     def quickSelect(l, r):
@@ -36,6 +36,33 @@ def findKthLargest(nums, k):
             return quickSelect (l, p - 1)
 
     return quickSelect (0, len (nums) - 1)
+
+"""
+Alternative Approach to quickSelect which is more efficient
+"""
+
+import random
+def findKthLargest(nums, k) -> int:
+    def quickselect(nums, k):
+        left, mid, right = [], [], []
+        pivot = random.choice (nums)
+        for num in nums:
+            if num > pivot:
+                left.append (num)
+            elif num < pivot:
+                right.append (num)
+            else:
+                mid.append (num)
+        print(left,mid,right)
+        if len (left) >= k:
+            return quickselect (left, k)
+
+        if len (left) + len (mid) < k:
+            return quickselect (right, k - len (left) - len (mid))
+        return mid[0]
+
+    return quickselect (nums, k)
+
 nums = [3,2,1,5,6,4]
 k = 2
 print(findKthLargest(nums,k))
