@@ -9,7 +9,8 @@ Heap:
         the heap.The operation takes olog(n) time complexity (for heapifying)
     - Similarly inserting an element also takes olog(n) time complexity.
     - Use heapq library in python for list type min heaps implementation
-    - Use heapq library in python for list type max heaps implementation by turning number data into opposite sign(* -1)
+    - Use heapq library in python for list type max heaps implementation by
+      turning number data into opposite sign(* -1)
 """
 import heapq
 
