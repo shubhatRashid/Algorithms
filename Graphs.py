@@ -50,13 +50,13 @@ class Graph: # dictionary or adjacency list representation
 
 """
 Graph :
-                A ---------------|
-              /   \              |
-             B     C             |
-             |  \  |            'G'
-             D ___ E             |
-              \   /              |
-                F----------------|
+                A 
+              /   \
+             B     C             
+             |  \  |
+             D ___ E             
+              \   /
+                F
 """
 mygraph = {
     'A' : ['B','C'],
@@ -68,7 +68,5 @@ mygraph = {
 }
 graph = Graph(gdic=mygraph)
 print(graph.gdic)
-graph.addEdge('A','G')
-graph.addEdge('F','G')
-print(graph.gdic)
+
 
