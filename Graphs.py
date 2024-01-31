@@ -17,5 +17,58 @@ GRAPH TERMINOLOGIES:
 - Cyclic Graph : contains at least one loop.
 - Tree : Special type of graph which is acyclic,Unweighted and directed.
 
+TYPES OF GRAPHS :
+- Directed :
+        Weighted
+            positive
+            negative
+        Unweighted
+
+- Undirected :
+        Weighted
+            positive
+            negative
+        Unweighted
+
+REPRESENTATION :
+- Adjacency matrix(2d matrix which depicts links between vertices.
+- Adjacency list(a list stores vertices and a linked list is used to
+    store its edge connections)
+- In python we use a nested list to create adjacency matrix and dictionary
+    to create adjacency list.
+"""
+
+class Graph: # dictionary or adjacency list representation
+    def __init__(self,gdic = None):
+        if gdic:
+            self.gdic = gdic
+        else:
+            self.gdic ={}
+    def addEdge(self,vertex,edge):
+        self.gdic[vertex].append(edge)
+
 
 """
+Graph :
+                A ---------------|
+              /   \              |
+             B     C             |
+             |  \  |            'G'
+             D ___ E             |
+              \   /              |
+                F----------------|
+"""
+mygraph = {
+    'A' : ['B','C'],
+    'B' : ['D','E'],
+    'C' : ['A','E'],
+    'D' : ['B','E','F'],
+    'E' : ['C','B','D','F'],
+    'F' : ['D','E']
+}
+graph = Graph(gdic=mygraph)
+print(graph.gdic)
+graph.addEdge('A','G')
+graph.addEdge('F','G')
+print(graph.gdic)
+
