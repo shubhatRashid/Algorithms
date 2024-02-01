@@ -38,26 +38,6 @@ REPRESENTATION :
     to create adjacency list.
 """
 
-class Graph: # dictionary or adjacency list representation
-    def __init__(self,gdic = None):
-        if gdic:
-            self.gdic = gdic
-        else:
-            self.gdic ={}
-    def addEdge(self,vertex,edge):
-        self.gdic[vertex].append(edge)
-
-
-"""
-Graph :
-                A 
-              /   \
-             B     C             
-             |  \  |
-             D ___ E             
-              \   /
-                F
-"""
 mygraph = {
     'A' : ['B','C'],
     'B' : ['D','E'],
@@ -66,7 +46,44 @@ mygraph = {
     'E' : ['C','B','D','F'],
     'F' : ['D','E']
 }
+
+class Graph: # dictionary or adjacency list representation
+    def __init__(self,gdic = None):
+        if gdic:
+            self.gdic = gdic
+        else:
+            self.gdic ={}
+
+    def addEdge(self,vertex,edge):
+        self.gdic[vertex].append(edge)
+
+    def bfs(self,vertex):
+        visited = set(vertex)
+        queue = [vertex]
+        result = []
+        while queue:
+            curr = queue.pop(0)
+            result.append(curr)
+            for adjacent in self.gdic[curr]:
+                if adjacent not in visited:
+                    queue.append (adjacent)
+                    visited.add(adjacent)
+        print(result)
+
+"""
+    Graph :
+                    A 
+                  /   \
+                 B     C             
+                 |  \  |
+                 D ___ E             
+                  \   /
+                    F
+    """
+
 graph = Graph(gdic=mygraph)
-print(graph.gdic)
+graph.bfs('A')
+
+
 
 
