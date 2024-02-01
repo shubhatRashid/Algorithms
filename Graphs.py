@@ -57,16 +57,27 @@ class Graph: # dictionary or adjacency list representation
     def addEdge(self,vertex,edge):
         self.gdic[vertex].append(edge)
 
-    def bfs(self,vertex):
+    def traversal(self,vertex,method):
         visited = set(vertex)
-        queue = [vertex]
+
+        # using set instead of list due to its
+        # high efficiency in finding elements
+        # from it becoz under the hood sets
+        # are created using hashmaps
+
+        storage = [vertex]
+        # queue for bfs and stack for dfs
         result = []
-        while queue:
-            curr = queue.pop(0)
+        while storage:
+            curr = storage.pop(0)
             result.append(curr)
             for adjacent in self.gdic[curr]:
                 if adjacent not in visited:
-                    queue.append (adjacent)
+                    if method == 'dfs':
+                        storage.insert(0,adjacent)
+                    else:
+                        storage.append(adjacent)
+                    # append for bfs and insert for dfs
                     visited.add(adjacent)
         print(result)
 
@@ -82,7 +93,7 @@ class Graph: # dictionary or adjacency list representation
     """
 
 graph = Graph(gdic=mygraph)
-graph.bfs('A')
+graph.traversal('A','bfs')
 
 
 
