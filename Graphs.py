@@ -79,8 +79,13 @@ class Graph: # dictionary or adjacency list representation
                         storage.append(adjacent)
                     # append for bfs and insert for dfs
                     visited.add(adjacent)
+                else:
+                    print("cycle found")
+
         print(result)
 
+
+# TOPOLOGICAL SORT IN DIRECTED GRAPHS #
 """
     Graph :
                     A 
@@ -90,10 +95,29 @@ class Graph: # dictionary or adjacency list representation
                  D ___ E             
                   \   /
                     F
-    """
+"""
+def topologicalSort(graph):
+     # if graph is not in adjacency list format then convert it
+     visited = set()
+     result = []
+     def dfs(vertex):
+         if vertex not in visited:
+            visited.add(vertex)
+            for nbr in graph[vertex]:
+                dfs(nbr)
+            result.insert(0,vertex)
+         #else:
+         # detect cycle
+     for key in list(graph.keys()):
+         dfs(key)
 
-graph = Graph(gdic=mygraph)
-graph.traversal('A','bfs')
+     return result
+print(topologicalSort(graph=mygraph))
+
+
+
+
+
 
 
 
