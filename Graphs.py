@@ -112,8 +112,42 @@ def topologicalSort(graph):
          dfs(key)
 
      return result
-print(topologicalSort(graph=mygraph))
 
+#print(topologicalSort(graph=mygraph))
+#example
+# course schedule II on leetcode
+def findOrder(numCourses,prerequisites):
+    prelist = {i: [] for i in range (numCourses)}
+    for c, p in prerequisites:
+        prelist[c].append (p)
+
+    result = []
+    visited = set ()
+
+    def dfs(crs):
+        if crs in visited:
+            return False
+
+        if prelist[crs] == []:
+            if crs not in result:
+                result.append (crs)
+            return True
+
+        visited.add (crs)
+        for pre in prelist[crs]:
+
+            if not dfs (pre):
+                return False
+
+        visited.remove (crs)
+        prelist[crs] = []
+        result.append (crs)
+        return True
+
+    for key in list (prelist.keys ()):
+        if not dfs (key):
+            return []
+    return result
 
 
 
