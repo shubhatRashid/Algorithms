@@ -85,6 +85,7 @@ class Graph: # dictionary or adjacency list representation
         print(result)
 
 # FINDING PATH BETWEEN TWO VERTICES IN DIRECTED GRAPH
+    # graph is adjacency dictionary format
     def has_path(graph, src, dst):
         def dfs(graph, src, dst):
             if src == dst:
@@ -96,6 +97,43 @@ class Graph: # dictionary or adjacency list representation
             return False
 
         return dfs (graph, src, dst)
+
+# FINDING PATH BETWEEN TWO VERTICES IN AN UNDIRECTED GRAPH
+    # graph is adjacency list format
+    """
+        edges = [
+                ('i', 'j'),
+                ('k', 'i'),
+                ('m', 'k'),
+                ('k', 'l'),
+                ('o', 'n')
+            ]
+    """
+def undirected_path(edges, node_A, node_B):
+    adj = {}
+    for u, v in edges:
+        if u in adj:
+            adj[u].append (v)
+        else:
+            adj[u] = [v]
+
+        if v in adj:
+            adj[v].append (u)
+        else:
+            adj[v] = [u]
+
+    visited = set ()
+
+    def dfs(node_A, node_B):
+        if node_A == node_B:
+            return True
+        visited.add (node_A)
+        for nbr in adj[node_A]:
+            if nbr not in visited and dfs (nbr, node_B):
+                return True
+        return False
+
+    return dfs (node_A, node_B)
 
 # TOPOLOGICAL SORT IN DIRECTED GRAPHS #
 """
