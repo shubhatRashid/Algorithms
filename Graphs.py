@@ -84,6 +84,18 @@ class Graph: # dictionary or adjacency list representation
 
         print(result)
 
+# FINDING PATH BETWEEN TWO VERTICES IN DIRECTED GRAPH
+    def has_path(graph, src, dst):
+        def dfs(graph, src, dst):
+            if src == dst:
+              return True
+
+              for nbr in graph[src]:
+                if dfs (graph, nbr, dst):
+                   return True
+            return False
+
+        return dfs (graph, src, dst)
 
 # TOPOLOGICAL SORT IN DIRECTED GRAPHS #
 """
@@ -148,8 +160,6 @@ def findOrder(numCourses,prerequisites):
         if not dfs (key):
             return []
     return result
-
-
 
 
 
