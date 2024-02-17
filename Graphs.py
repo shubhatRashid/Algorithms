@@ -135,72 +135,20 @@ def undirected_path(edges, node_A, node_B):
 
     return dfs (node_A, node_B)
 
-# TOPOLOGICAL SORT IN DIRECTED GRAPHS #
-"""
-    Graph :
-                    A 
-                  /   \
-                 B     C             
-                 |  \  |
-                 D ___ E             
-                  \   /
-                    F
-"""
-def topologicalSort(graph):
-     # if graph is not in adjacency list format then convert it
-     visited = set()
-     result = []
-     def dfs(vertex):
-         if vertex not in visited:
-            visited.add(vertex)
-            for nbr in graph[vertex]:
-                dfs(nbr)
-            result.insert(0,vertex)
-         #else:
-         # detect cycle
-     for key in list(graph.keys()):
-         dfs(key)
-
-     return result
-
-#print(topologicalSort(graph=mygraph))
-#example
-# course schedule II on leetcode
-def findOrder(numCourses,prerequisites):
-    prelist = {i: [] for i in range (numCourses)}
-    for c, p in prerequisites:
-        prelist[c].append (p)
-
-    result = []
+# FINDING CONNECTED COMPONENTS IN A GIVEN ADJACENCY LIST
+def connected_components_count(graph):
     visited = set ()
+    components = 0
 
-    def dfs(crs):
-        if crs in visited:
-            return False
+    def dfs(vertex):
+        if vertex not in visited:
+            visited.add (vertex)
+            for nbr in graph[vertex]:
+                if nbr not in visited and dfs (nbr):
+                    return True
+        return False
 
-        if prelist[crs] == []:
-            if crs not in result:
-                result.append (crs)
-            return True
-
-        visited.add (crs)
-        for pre in prelist[crs]:
-
-            if not dfs (pre):
-                return False
-
-        visited.remove (crs)
-        prelist[crs] = []
-        result.append (crs)
-        return True
-
-    for key in list (prelist.keys ()):
-        if not dfs (key):
-            return []
-    return result
-
-
-
-
-
-
+    for vertex in graph:
+        if vertex not in visited and not dfs (vertex):
+            components += 1
+    return components
