@@ -152,3 +152,22 @@ def connected_components_count(graph):
         if vertex not in visited and not dfs (vertex):
             components += 1
     return components
+
+# FINDING SIZE OF LARGEST COMPONENT
+def largest_component(graph):
+  visited = set ()
+  maxSize = 0
+
+  def dfs(vertex):
+      if vertex in visited:
+        return 0
+      size = 1
+      visited.add(vertex)
+      for nbr in graph[vertex]:
+        size += dfs(nbr)
+      return size
+
+  for vertex in graph:
+     size = dfs(vertex)
+     maxSize = max(size,maxSize)
+  return maxSize
