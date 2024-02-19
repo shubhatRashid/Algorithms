@@ -171,3 +171,20 @@ def largest_component(graph):
      size = dfs(vertex)
      maxSize = max(size,maxSize)
   return maxSize
+
+# FINDING SHORTEST PATH ALGORITHM
+def shortest_path(adj, node_A, node_B):
+
+    queue = [[node_A, 0]]
+    visited = set ([node_A])
+    while queue:
+        temp = queue.pop (0)  # temp = [node,length]
+
+        if temp[0] == node_B:
+            return temp[1]
+
+        for nbr in adj[temp[0]]:
+            if nbr not in visited:
+                queue.append ([nbr, temp[1] + 1])
+                visited.add (nbr)
+    return -1
