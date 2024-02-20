@@ -172,7 +172,7 @@ def largest_component(graph):
      maxSize = max(size,maxSize)
   return maxSize
 
-# FINDING SHORTEST PATH ALGORITHM
+# FINDING SHORTEST PATH ALGORITHM USING BFS
 def shortest_path(adj, node_A, node_B):
 
     queue = [[node_A, 0]]
