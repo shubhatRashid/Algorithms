@@ -58,33 +58,5 @@ def count_paths(grid): # count ways to react the end of the grid
 
     return dfs (0, 0)
     # Space: O (n)
-
-"""
-Write a function minChange that takes in an amount and an array of coins. The function should return the minimum number of coins required to create the amount. You may use each coin as many times as necessary.
-
-If it is not possible to create the amount, then return -1.
-"""
-def minChange(amount,coins):
-    
-    memo = {}
-    def dfs(amount,coins):
-        
-        if amount in memo:
-            return memo[amount]
-            
-        if amount == 0:
-            return 0
-        
-        if amount < 0 :
-            return 100000
-        minCount = 100000    
-        for c in coins:
-            nums = 1+ dfs(amount-c,coins)
-            minCount = min(minCount,nums)
-        memo[amount] = minCount
-        return minCount
-        
-    res = dfs(amount,coins)
-    return res if res!= 100000 else -1
-print(minChange(102, [1, 5, 10, 25]))
+    # Time : O (n)
 
