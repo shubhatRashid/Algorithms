@@ -35,7 +35,6 @@ def fibM(n): # after memoization
     print (store)
     return store[n]
     # Time: O (n)
-<<<<<<< HEAD
     # Space: O (n)
 
 # Memoization in 2d array:
@@ -58,7 +57,6 @@ def count_paths(grid): # count ways to react the end of the grid
         return memo[f"{i},{j}"]
 
     return dfs (0, 0)
-=======
     # Space: O (n)
 
 """
@@ -89,4 +87,4 @@ def minChange(amount,coins):
     res = dfs(amount,coins)
     return res if res!= 100000 else -1
 print(minChange(102, [1, 5, 10, 25]))
->>>>>>> d063e397f99fc87b702d6b1b0e2db260392d9ef9
+
