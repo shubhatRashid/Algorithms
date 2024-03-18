@@ -108,4 +108,20 @@ def canSumMemoised (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
     memo[target] = False
     return False
 
-print(canSumMemoised(target = 7000 , arr = [5,3,4,7]))
+# In the above problem return one of the array of numbers which
+# sum up to target
+def howSum (target,arr): # target = 7 , arr = [5,3,4,7]
+
+    if target == 0:
+        return []
+
+    if target < 0:
+        return None
+
+    for a in arr:
+        temp = howSum(target-a,arr)
+        if temp != None :
+            temp.append(a)
+            return temp
+
+    return None
