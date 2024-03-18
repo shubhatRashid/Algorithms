@@ -60,3 +60,16 @@ def count_paths(grid): # count ways to react the end of the grid
     # Space: O (n)
     # Time : O (n)
 
+# MEMOIZATION RECIPE
+"""
+ 1 ) Solve the problem:
+ 
+    - find out the brute force solution by
+      considering recursion as a tree.Find its
+      base case and build from there.
+ 2 ) Make it efficient:
+ 
+    - add a memo object
+    - add a new base case considering memo object
+    - add the return values in memo object.
+"""
