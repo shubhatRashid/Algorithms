@@ -73,3 +73,39 @@ def count_paths(grid): # count ways to react the end of the grid
     - add a new base case considering memo object
     - add the return values in memo object.
 """
+
+# Write a function to check if elements in an array can sumup in
+# any combination to form a target element
+
+#BruteForce solution
+def canSum (target,arr): # target = 7 , arr = [5,3,4,7]
+    if target == 0:
+        return True
+    if target < 0:
+        return False
+
+    for a in arr:
+        if canSum(target-a,arr):
+            return True
+    return False
+
+# Memoized solution
+def canSumMemoised (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
+    if target in memo:
+        return memo[target]
+
+    if target == 0:
+        return True
+
+    if target < 0:
+        return False
+
+    for a in arr:
+        if canSumMemoised(target-a,arr,memo):
+            memo[target] = True
+            return True
+
+    memo[target] = False
+    return False
+
+print(canSumMemoised(target = 7000 , arr = [5,3,4,7]))
