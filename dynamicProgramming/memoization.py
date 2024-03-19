@@ -133,4 +133,5 @@ def howSum (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
     memo[target] = None
     return None
     # Time complexity = O(n*m)
-    # Space complexity = O(m+m) ~ O(m) recursion stack and return array
+    # Space complexity = O(m+m*m) ~ O(m^2) recursion stack and memo
+    # in memo each key can take atmost an array of length m hence m^2
