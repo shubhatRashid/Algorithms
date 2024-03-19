@@ -88,6 +88,8 @@ def canSum (target,arr): # target = 7 , arr = [5,3,4,7]
         if canSum(target-a,arr):
             return True
     return False
+    # Time complexity = O(n^m) m = target , n = len(arr)
+    # Space complexity = O(m)
 
 # Memoized solution
 def canSumMemoised (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
@@ -107,6 +109,8 @@ def canSumMemoised (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
 
     memo[target] = False
     return False
+    # Time complexity = O(m*n)
+    # Space complexity = O(m)
 
 # In the above problem return one of the array of numbers which
 # sum up to target
@@ -121,11 +125,12 @@ def howSum (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
         return None
 
     for a in arr:
-        temp = howSum(target-a,arr)
+        temp = howSum(target-a,arr,memo)
         if temp != None :
             temp.append(a)
             memo[target] = temp
             return temp
     memo[target] = None
     return None
-print(howSum(target=11,arr = [5,3,4,7]))
+    # Time complexity = O(n*m)
+    # Space complexity = O(m+m) ~ O(m) recursion stack and return array
