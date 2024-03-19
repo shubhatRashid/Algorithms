@@ -135,3 +135,48 @@ def howSum (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
     # Time complexity = O(n*m)
     # Space complexity = O(m+m*m) ~ O(m^2) recursion stack and memo
     # in memo each key can take atmost an array of length m hence m^2
+
+# In above problem return the array with min length
+# from the all solutions
+def bestSum(target,arr): #bruteforce
+    if target == 0:
+        return []
+
+    if target < 0:
+        return None
+
+    array = None
+    for a in arr:
+        temp = bestSum(target-a,arr)
+        if temp is not None :
+            temp.append(a)
+            if  array is None or len(temp) < len(array):
+                array = temp
+    return array
+    # Time complexity : O(n^m)
+    # Space complexity : O(m*m) as we are creating an 'array' for each call
+
+def bestSumMemoized(target,arr,memo): # memoized
+    if target in memo:
+        return memo[target]
+    if target == 0:
+        return []
+
+    if target < 0:
+        return None
+
+    array = None
+    for a in arr:
+        temp = bestSumMemoized(target-a,arr,memo)
+        if temp is not None :
+            temp = temp[:]
+            # appending to the same temp leads to unexpected behavior
+            # as it is edited across all calls
+            temp.append(a)
+            if array is None or len(temp) < len(array):
+                array = temp
+    memo[target] = array
+    return array
+    # Time complexity : O(n^m)
+    # Space complexity : O(m)
+print(bestSumMemoized(target=100,arr=[1,2,5,25],memo={}))
