@@ -110,7 +110,9 @@ def canSumMemoised (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
 
 # In the above problem return one of the array of numbers which
 # sum up to target
-def howSum (target,arr): # target = 7 , arr = [5,3,4,7]
+def howSum (target,arr,memo={}): # target = 7 , arr = [5,3,4,7]
+    if target in memo:
+        return memo[target]
 
     if target == 0:
         return []
@@ -122,6 +124,8 @@ def howSum (target,arr): # target = 7 , arr = [5,3,4,7]
         temp = howSum(target-a,arr)
         if temp != None :
             temp.append(a)
+            memo[target] = temp
             return temp
-
+    memo[target] = None
     return None
+print(howSum(target=11,arr = [5,3,4,7]))
