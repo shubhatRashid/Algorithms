@@ -172,11 +172,34 @@ def bestSumMemoized(target,arr,memo): # memoized
             temp = temp[:]
             # appending to the same temp leads to unexpected behavior
             # as it is edited across all calls
+            # it didnot matter in previous questions as we were returning
+            # as soon as we got the answer
             temp.append(a)
             if array is None or len(temp) < len(array):
                 array = temp
     memo[target] = array
     return array
-    # Time complexity : O(n^m)
-    # Space complexity : O(m)
-print(bestSumMemoized(target=100,arr=[1,2,5,25],memo={}))
+    # Time complexity : O(n*m*m) as we copy temp in each call
+    # Space complexity : O(m*n) # previous and memo
+
+"""
+    Given a string and an array containing substrings return True if 
+    the string can be constructed using the substrings in the array and 
+    false otherwise
+"""
+def canConstruct(s,wordbank,target,memo={}):
+    if s in memo:
+        return memo[s]
+    if s == target:
+        return True
+    if len(s) > len(target):
+        return False
+
+    for sub in wordbank:
+        if canConstruct(s+sub,wordbank,target,memo):
+            memo[s] = True
+            return memo[s]
+    memo[s] = False
+    return memo[s]
+
+print(canConstruct("",['bo','d','ate','t','ska','sk','boar'],'skateboard'))
