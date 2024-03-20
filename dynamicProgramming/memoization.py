@@ -214,13 +214,32 @@ def canConstruct2(wordbank,target,memo={}):
 
     for sub in wordbank:
         if sub in target and target.index(sub) == 0 :
-            sufix = target[len(sub):]
+            sufix = target[len(sub):] # O(m) operation
             if canConstruct2(wordbank,sufix,memo):
                 memo[target] = True
                 return True
     memo[target] = False
     return False
-    # Time : O(n*m)
+    # Time : O(n^m *m) before memoization and O(n*m^2) after memoization
     # Space : O(m^2)
-print(canConstruct2(['bo','d','ate','t','ska','sk','boar'],'skateboard'))
-print(canConstruct2(['ab','cd','ef','bo','d','ate','t','ska','sk','boar'],'skateboardskateboardskateboardskateboardskateboardskateboardskateboardskateboard'))
+
+"""
+In the above problem now return the no of ways whe string can be formed
+"""
+def countConstruct(wordbank,target,memo={}):
+    if target in memo:
+        return memo[target]
+
+    if target == '':
+        return 1
+
+    count = 0
+    for sub in wordbank:
+        if sub in target and target.index(sub) == 0 :
+            suffix = target[len(sub):] # O(m) operation
+            count += countConstruct(wordbank,suffix,memo)
+    memo[target] = count
+    return count
+    # Time : O(n^m *m) before memoization and O(n*m^2) after memoization
+    # Space : O(m^2)
+print(countConstruct(['a','p','ent','enter','ot','o','t'],'enterapotentpot')) # 4
