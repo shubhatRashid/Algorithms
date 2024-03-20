@@ -201,5 +201,25 @@ def canConstruct(s,wordbank,target,memo={}):
             return memo[s]
     memo[s] = False
     return memo[s]
+    # Time : O(n*m)
+    # Space : O(m)
 
-print(canConstruct("",['bo','d','ate','t','ska','sk','boar'],'skateboard'))
+# Alternate solution
+def canConstruct2(wordbank,target,memo={}):
+    if target in memo:
+        return memo[target]
+    if target == '':
+        return True
+
+    for sub in wordbank:
+        if sub in target and target.index(sub) == 0 :
+            sufix = target[len(sub):]
+            if canConstruct2(wordbank,sufix,memo):
+                memo[target] = True
+                return True
+    memo[target] = False
+    return False
+    # Time : O(n*m)
+    # Space : O(m)
+print(canConstruct2(['bo','d','ate','t','ska','sk','boar'],'skateboard'))
+print(canConstruct2(['ab','cd','ef','bo','d','ate','t','ska','sk','boar'],'skateboardskateboardskateboardskateboardskateboardskateboardskateboardskateboard'))
