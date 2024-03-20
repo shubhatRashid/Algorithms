@@ -187,6 +187,7 @@ def bestSumMemoized(target,arr,memo): # memoized
     the string can be constructed using the substrings in the array and 
     false otherwise
 """
+# Solution 1 : we take an empty string and build with each call
 def canConstruct(s,wordbank,target,memo={}):
     if s in memo:
         return memo[s]
@@ -204,7 +205,7 @@ def canConstruct(s,wordbank,target,memo={}):
     # Time : O(n*m)
     # Space : O(m)
 
-# Alternate solution
+# Alternate solution : We reduce the target in each call
 def canConstruct2(wordbank,target,memo={}):
     if target in memo:
         return memo[target]
@@ -220,6 +221,6 @@ def canConstruct2(wordbank,target,memo={}):
     memo[target] = False
     return False
     # Time : O(n*m)
-    # Space : O(m)
+    # Space : O(m^2)
 print(canConstruct2(['bo','d','ate','t','ska','sk','boar'],'skateboard'))
 print(canConstruct2(['ab','cd','ef','bo','d','ate','t','ska','sk','boar'],'skateboardskateboardskateboardskateboardskateboardskateboardskateboardskateboard'))
