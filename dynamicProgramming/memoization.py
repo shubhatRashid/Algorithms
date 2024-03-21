@@ -242,4 +242,25 @@ def countConstruct(wordbank,target,memo={}):
     return count
     # Time : O(n^m *m) before memoization and O(n*m^2) after memoization
     # Space : O(m^2)
-print(countConstruct(['a','p','ent','enter','ot','o','t'],'enterapotentpot')) # 4
+
+"""
+In the above problem now return the all of ways whe string can be formed
+"""
+def allConstruct(wordbank,target,memo={}):
+    if target in memo:
+        return memo[target]
+    if target == '':
+        return [[]]
+
+    result = []
+    for sub in wordbank:
+        if sub in target and target.index(sub) == 0 :
+            suffix = target[len(sub):] # O(m) operation
+            suffixWays = allConstruct(wordbank,suffix,memo)
+            targetWays = [way+[sub] for way in suffixWays]
+            result += targetWays
+    memo[target] = result
+    return result
+    # Time : O(n^m*m) cannot do better here as we have to generate all possibilities
+    # Space : O(m) as m is very large
+print(allConstruct(['a','p','ent','enter','ot','o','t'],'enterapot'))
