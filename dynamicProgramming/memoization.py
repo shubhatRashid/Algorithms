@@ -263,4 +263,3 @@ def allConstruct(wordbank,target,memo={}):
     return result
     # Time : O(n^m*m) cannot do better here as we have to generate all possibilities
     # Space : O(m) as m is very large
-print(allConstruct(['a','p','ent','enter','ot','o','t'],'enterapot'))
