@@ -43,6 +43,8 @@ def canSum(target,nums):
                 if i+num < len(table):
                     table[i+num] = True
     return table[target]
+    # Time Complexity : O(mn)
+    # Space Complexity : O(m)
 # print(canSum(7,[5,3,4]))
 # print(canSum(7,[2,4]))
 
@@ -55,5 +57,28 @@ def howSum(target,nums):
                 if i+num < len(table):
                     table[i+num] = table[i].copy()
                     table[i+num].append(num)
-    return table
-print(howSum(7,[5,3,4]))
+    return table[target]
+    # Time Complexity : O(m^2 * n)
+    # Space Complexity : O(mn)
+#print(howSum(7,[2,5,3]))
+
+def bestSum(target,nums):
+    table = [None] *(target+1)
+    table[0] = []
+    for i in range(len(table)):
+        if table[i] is not None:
+            for num in nums:
+                if i+num < len(table):
+                    curr = table[i+num]
+                    new = table[i].copy()
+                    if curr is None:
+                        table[i+num] = new
+                        table[i + num].append (num)
+                    else:
+                        if len(curr) > len(new):
+                            table[i+num] = new
+                            table[i+num].append(num)
+    return table[target]
+print(bestSum(700,[2,5,7]))
+
+
