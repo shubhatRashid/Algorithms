@@ -26,13 +26,22 @@ def gridTravel(m,n):
     print (table)
     return table[m][n]
 
-print(gridTravel(3,3))
-
 # Memoization Recipe
 """
     1) visualise the problem as a table
     2) figure out the size of table on basis of inputs
     3) initialize the table with given size and default values
-    4) fiqure out the base case values for the table / seed values
+    4) figure out the base case values for the table / seed values
     5) iterate through the table with the logic required for the problem
 """
+def canSum(target,nums):
+    table = [False]*(target+1)
+    table[0] = True
+    for i in range(len(table)):
+        if table[i]:
+            for num in nums:
+                if i+num < len(table):
+                    table[i+num] = True
+    return table[target]
+print(canSum(7,[5,3,4]))
+print(canSum(7,[2,4]))
