@@ -79,6 +79,36 @@ def bestSum(target,nums):
                             table[i+num] = new
                             table[i+num].append(num)
     return table[target]
-print(bestSum(700,[2,5,7]))
+    # Time Complexity : O(m^2 * n)
+    # Space Complexity : O(mn)
+
+# print(bestSum(8,[2,3,5]))
+
+# House Robber II solution using tabulation
+def rob(nums):
+    # cannot do memoization using memo method as we have to use same nums
+    # twice which leads to unexpected values from memo
+        if len (nums) == 1:
+            return nums[0]
+
+        def helper(nums):
+            if not nums:
+                return 0
+            if len (nums) == 1:
+                return nums[0]
+
+            table = [0] * len (nums)
+            table[0] = nums[0]
+            table[1] = nums[1] if nums[1] > nums[0] else nums[0]
+            penultimate = table[0]
+            prev = table[1]
+            for i in range (2, len (nums)):
+                table[i] = max (penultimate + nums[i], prev)
+                prev = table[i]
+                penultimate = table[i - 1]
+            return table[-1]
+
+        return max (helper (nums[:-1]), helper (nums[1:]))
+print(rob([1,3,1,3,100]))
 
 
