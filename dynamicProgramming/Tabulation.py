@@ -109,6 +109,32 @@ def rob(nums):
             return table[-1]
 
         return max (helper (nums[:-1]), helper (nums[1:]))
-print(rob([1,3,1,3,100]))
+        # Time Complexity : O(n)
+        # Space Complexity : O(n)
+
+# print(rob([1,3,1,3,100]))
+
+# Solving house robber in const space time complexity
+def houseRobber(nums):
+    if len (nums) == 1:
+        return nums[0]
+
+    def helper(nums):
+        if not nums:
+            return 0
+        if len (nums) == 1:
+            return nums[0]
+
+        loot = nums[0]
+        prev = nums[1] if nums[1] > nums[0] else nums[0]
+        for i in range (2, len (nums)):
+            storeprev = prev
+            prev = max (loot + nums[i], prev)
+            loot = storeprev
+        return prev
+
+    return max (helper (nums[:-1]), helper (nums[1:]))
+
+print(houseRobber([1,3,1,3,100]))
 
 
