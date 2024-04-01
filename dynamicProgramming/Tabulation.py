@@ -162,5 +162,20 @@ def howConsruct(word,letters):
                     print('possible prefix is',p)
                     table[i+len(p)] = table[i] + p
     return table
-print(howConsruct('abcdef',['ab','abc','cd','def','abcd']))
+# print(howConsruct('abcdef',['ab','abc','cd','def','abcd']))
+
+def countConsruct(word,letters):
+    table = [0] * (len(word)+1)
+    table[0] = 0
+    for i in range(len(table)):
+        if table[i] is not None :
+            suffix = word[i:]
+            print('suffix is',suffix)
+            for p in letters:
+                if p in suffix and suffix.index(p) == 0 and i+len(p) < len(table):
+                    print('possible prefix is',p)
+                    table[i+len(p)] += 1
+
+    return table
+print(countConsruct('abcde',['ab','abc','cd','def','abcd']))
 
