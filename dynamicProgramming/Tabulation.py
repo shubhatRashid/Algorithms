@@ -135,6 +135,19 @@ def houseRobber(nums):
 
     return max (helper (nums[:-1]), helper (nums[1:]))
 
-print(houseRobber([1,3,1,3,100]))
+# print(houseRobber([1,3,1,3,100]))
+def canConsruct(word,letters):
+    table = [False] * (len(word)+1)
+    table[0] = True
+    for i in range(len(table)):
+        if table[i] :
+            suffix = word[i:]
+            print('suffix is',suffix)
+            for p in letters:
+                if p in suffix and suffix.index(p) == 0 and i+len(p) < len(table):
+                    print('possible prefix is',p)
+                    table[i+len(p)] = True
+    return table
+print(canConsruct('abcdef',['ab','abc','cd','def','abcd']))
 
 
