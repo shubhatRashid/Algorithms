@@ -166,7 +166,7 @@ def howConsruct(word,letters):
 
 def countConsruct(word,letters):
     table = [0] * (len(word)+1)
-    table[0] = 0
+    table[0] = 1
     for i in range(len(table)):
         if table[i] is not None :
             suffix = word[i:]
@@ -177,5 +177,24 @@ def countConsruct(word,letters):
                     table[i+len(p)] += 1
 
     return table
-print(countConsruct('abcde',['ab','abc','cd','def','abcd']))
+#print(countConsruct('abcdef',['ab','abc','cd','def','abcd']))
+
+def allConsruct(word,letters):
+    table = [[] for i in range(len(word) + 1)]
+    # do not initialize as [[]] * len(word) + 1 as this initialises
+    # same element multiple times which means changes to one element
+    # causes changes to all elements
+    table[0] = [[]]
+    for i in range(len(table)):
+            suffix = word[i:]
+            print('suffix is',suffix)
+            for p in letters:
+                if p in suffix and suffix.index(p) == 0 and i+len(p) < len(table):
+                    print('possible prefix is',p)
+                    newValue = table[i][:]
+                    modifiednewValue = [way+[p] for way in newValue]
+                    table[i+len(p)]+=(modifiednewValue)
+
+    return table[-1]
+print(allConsruct('abcdef',['ab','abc','cd','def','abcd','ef']))
 
