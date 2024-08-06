@@ -13,6 +13,15 @@ Backtracking :
 - The condition which breaks the recursive cycle is called bounding
   condition or function.
 
+- The key difference between recursion and backtracking is that :
+    -> Recursion is a function calling itself with simpler arguments each time untill it reaches a
+       solution or a boundry
+
+    -> Backtracking is used to find a solution/solutions among all possibilities of a problem.
+
+    -> Unlike recursion the problem is doesnot get smaller at each cycle but all  valid possibilities
+       are checked
+
 example :
 - Given an array of distinct integers candidates and a target integer target,
   return a list of all unique combinations of candidates
